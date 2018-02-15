@@ -20,21 +20,21 @@ class TestMileageDB(TestCase):
 
     def test_add_new_vehicle(self):
         mileage.add_miles('Blue Car', 100)
-        expected = { 'Blue Car': 100 }
+        expected = { 'BLUE CAR': 100 }
         self.compare_db_to_expected(expected)
 
-        mileage.add_miles('Green Car', 50)
-        expected['Green Car'] = 50
+        mileage.add_miles('gReEn CaR', 50)
+        expected['GREEN CAR'] = 50
         self.compare_db_to_expected(expected)
 
 
     def test_increase_miles_for_vehicle(self):
-        mileage.add_miles('Red Car', 100)
-        expected = { 'Red Car': 100 }
+        mileage.add_miles('red car', 100)
+        expected = { 'RED CAR': 100 }
         self.compare_db_to_expected(expected)
 
-        mileage.add_miles('Red Car', 50)
-        expected['Red Car'] = 100 + 50
+        mileage.add_miles('rEd cAr', 50)
+        expected['RED CAR'] = 100 + 50
         self.compare_db_to_expected(expected)
 
 
@@ -50,6 +50,20 @@ class TestMileageDB(TestCase):
             mileage.addMiles('Car', 'abc')
         with self.assertRaises(Exception):
             mileage.addMiles('Car', '12.def')
+
+
+    def test_search_vehicle_mileage(self):
+        mileage.add_miles('Blue Car', 100)
+        miles = mileage.search_vehicle_mileage('blue car')
+        self.assertEqual(100, miles)
+
+        mileage.add_miles('red car', 100)
+        miles = mileage.search_vehicle_mileage('RED CAR')
+        self.assertEqual(100, miles)
+
+        miles = mileage.search_vehicle_mileage('purple car')
+        self.assertEqual(None, miles)
+
 
 
     # This is not a test method, instead, it's used by the test methods
