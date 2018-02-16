@@ -54,4 +54,5 @@ def main():
     guessWords, charInfo = setup()
     gamePlay(guessWords, charInfo)
 
-main()
+if __name__ == '__main__':
+    main()

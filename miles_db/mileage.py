@@ -39,6 +39,8 @@ def search_vehicle_mileage(vehicle):
     cursor = conn.cursor()
 
     mileageData = cursor.execute('SELECT total_miles FROM MILES WHERE vehicle = ?', (str(vehicle),) ).fetchall()
+    conn.close()
+
 
     mileage = -1
     for row in mileageData:

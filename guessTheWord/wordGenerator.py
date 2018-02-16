@@ -6,7 +6,7 @@
 # 4. It creates the Words class objects
 
 import random
-import words
+# import words
 
 # Reads from the dictionary file (dictionary.txt by default) and stores & returns the value into a list. (Referenced try/except from ITEC1150 class lab 7 work )
 def readDictionary():

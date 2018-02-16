@@ -24,4 +24,4 @@ class Characters:
         self.blanks = blanks
 
     def __str__(self):
-        return str(self.guessedCharacters)
+        return ', '.join(self.guessedCharacters)
